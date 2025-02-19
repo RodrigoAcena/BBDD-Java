@@ -79,17 +79,17 @@ public class Metodos {
 		
 		try {
 			boolean continuar = false;
-			String consulta = "INSERT INTO ofertas (id, nombre, numero, descripcion, precio, id_local)"
-					+ " VALUES (?, ?, ?, ?, ?, ?)";
+			String consulta = "INSERT INTO ofertas (nombre, numero, descripcion, precio, id_local)"
+					+ " VALUES (?, ?, ?, ?, ?)";
             ps = conexion.prepareStatement(consulta);
             res = ps.executeQuery();
             
             do {
-            	ps.setString(2, nombre);
-                ps.setString(3, numero);
-                ps.setString(4, des);
-                ps.setFloat(5, precio);
-                ps.setInt(6, local);
+            	ps.setString(1, nombre);
+                ps.setString(2, numero);
+                ps.setString(3, des);
+                ps.setFloat(4, precio);
+                ps.setInt(5, local);
                 
                 continuar = sN(entrada);
     			ps.clearParameters();
@@ -113,16 +113,16 @@ public class Metodos {
 		
 		try {
 			boolean continuar = false;
-			String consulta = "INSERT INTO clientes (id, numero, nombre, direccion, telefono)"
-					+ " VALUES (?, ?, ?, ?, ?)";
+			String consulta = "INSERT INTO clientes (numero, nombre, direccion, telefono)"
+					+ " VALUES (?, ?, ?, ?)";
             ps = conexion.prepareStatement(consulta);
             res = ps.executeQuery();
             
             do {
-            	ps.setString(2, numero);
-                ps.setString(3, nombre);
-                ps.setString(4, dir);
-                ps.setString(5, telefono);
+            	ps.setString(1, numero);
+                ps.setString(2, nombre);
+                ps.setString(3, dir);
+                ps.setString(4, telefono);
                 
                 continuar = sN(entrada);
     			ps.clearParameters();
