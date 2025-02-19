@@ -83,10 +83,84 @@ public class Principal {
 					String direccion = entrada.nextLine();
 					
 					System.out.print("Precio: ");
-					String telefono = entrada.nextLine();
-					Metodos.introducirClientes(conexion, entrada, numeroC, nombreC, direccion, telefono);
+					String telefonoCliente = entrada.nextLine();
+					Metodos.introducirClientes(conexion, entrada, numeroC, nombreC, direccion, telefonoCliente);
 					break;
 				case 6:
+					int opcion6;
+					do {
+						System.out.println("Datos a modificar:");
+						System.out.println("\t1. DNI\r\n"
+								+ "\t2. Direccion\r\n"
+								+ "\t3. Telefono\r\n"
+								+ "\t4. (Volver)");
+						System.out.print("Opcion:");
+						opcion6 = entrada.nextInt();
+						entrada.nextLine();
+						
+						switch(opcion6) {
+						case 1:
+							String dato_dni = "dni";
+							int num1;
+							
+							System.out.print("¿A quien quieres modificarle el DNI?: ");
+							String nombreDNI = entrada.nextLine();
+							
+							do {
+								System.out.print("Introduce un numero de 9 digitos: ");
+								num1 = entrada.nextInt();
+								entrada.nextLine();
+								
+								if(String.valueOf(num1).length() != 9) {
+									System.err.println("El numero tiene que tener 9 digitos");
+								} else {
+									continue;
+								}
+							} while(String.valueOf(num1).length() != 9);
+							
+							System.out.print("Introduce la ultima letra: ");
+							char letra = entrada.next().charAt(0);
+							
+							String dni = String.valueOf(num1)+letra;
+							
+							Metodos.modificarEmpleados(conexion, entrada, dato_dni, dni, nombreDNI);
+						case 2:
+							String dato_dir = "direccion";
+							
+							System.out.print("¿A quien quieres modificarle la direccion?: ");
+							String nombreDIR = entrada.nextLine();
+							
+							System.out.print("Introduce la calle donde vive:");
+							String calle = entrada.nextLine();
+							
+							Metodos.modificarEmpleados(conexion, entrada, dato_dir, calle, nombreDIR);
+						case 3:
+							String dato_tel = "telefono";
+							String telefonoEmpleado;
+							
+							System.out.print("¿A quien quieres modificarle el numero de telefono?: ");
+							String nombreTEL = entrada.nextLine();
+							
+							do {
+								System.out.print("Introduce el numero de telefono de 9 digitos(XXX-XXX-XXX o XXX-XX-XX-XX): ");
+								telefonoEmpleado = entrada.nextLine();
+								
+								if(telefonoEmpleado.length() != 9) {
+									System.err.println("El numero tiene que tener 9 digitos");
+								} else {
+									continue;
+								}
+							} while (String.valueOf(telefonoEmpleado).length() != 9);
+														
+							Metodos.modificarEmpleados(conexion, entrada, dato_tel, telefonoEmpleado, nombreTEL);
+						case 4:
+							break;
+						default:
+							System.err.println("ERROR: OPCION INCORRECTA");
+							System.out.println();
+						}
+					} while(opcion6 != 4);
+					
 					break;
 				case 7:
 					break;

@@ -140,8 +140,60 @@ public class Metodos {
         }
 	}
 
-	public static void modificarEmpleados() {
+	public static void modificarEmpleados(Connection conexion, Scanner entrada, String dato, String cambio, String nombre) {
+		PreparedStatement ps = null;
+		ResultSet res = null;
 		
+		try {
+			boolean continuar = false;
+			
+			switch(dato) {
+			case "dni":
+				String consultaDNI = "UPDATE empleados SET"
+						+ " dni=\'cambio\'"
+						+ "WHERE nombre=\'nombre\'";
+	            ps = conexion.prepareStatement(consultaDNI);
+	            res = ps.executeQuery();
+	            
+	            do {
+	            	continuar = sN(entrada);
+	            } while(continuar);
+				break;
+			case "direccion":
+				String consultaDIR = "UPDATE empleados SET"
+						+ " direccion=\'cambio\'"
+						+ "WHERE nombre=\'nombre\'";
+	            ps = conexion.prepareStatement(consultaDIR);
+	            res = ps.executeQuery();
+	            
+	            do {
+	            	continuar = sN(entrada);
+	            } while(continuar);
+				break;
+			case "telefono":
+				String consultaTEL = "UPDATE empleados SET"
+						+ " telefono=\'cambio\'"
+						+ "WHERE nombre=\'nombre\'";
+	            ps = conexion.prepareStatement(consultaTEL);
+	            res = ps.executeQuery();
+	            
+	            do {
+	            	continuar = sN(entrada);
+	            } while(continuar);
+				break;
+			}
+            
+            
+        } catch (SQLException e) {
+            System.err.println("Error al mostrar datos: " + e.getMessage());
+        } finally {
+            try {
+                if (res != null) res.close();
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar recursos: " + e.getMessage());
+            }
+        }
 	}
 	
 	public static void modificarLocales() {
