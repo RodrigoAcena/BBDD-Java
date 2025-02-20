@@ -61,7 +61,7 @@ public class Principal {
 					String numeroO = entrada.nextLine();
 					
 					System.out.print("Descripcion: ");
-					String descripcion = entrada.nextLine();
+					String desOferta = entrada.nextLine();
 					
 					System.out.print("Precio: ");
 					float precio = entrada.nextFloat();
@@ -70,7 +70,7 @@ public class Principal {
 					System.out.print("ID_Local: ");
 					int id_local = entrada.nextInt();
 					entrada.nextLine();
-					Metodos.introducirOfertas(conexion, entrada, nombreO, numeroO, descripcion, precio, id_local);
+					Metodos.introducirOfertas(conexion, entrada, nombreO, numeroO, desOferta, precio, id_local);
 					break;
 				case 5:
 					System.out.print("Nombre: ");
@@ -87,6 +87,7 @@ public class Principal {
 					Metodos.introducirClientes(conexion, entrada, numeroC, nombreC, direccion, telefonoCliente);
 					break;
 				case 6:
+					//empleados
 					int opcion6;
 					do {
 						System.out.println("Datos a modificar:");
@@ -163,6 +164,75 @@ public class Principal {
 					
 					break;
 				case 7:
+					//locales
+					int opcion7;
+					do {
+						System.out.println("Datos a modificar:");
+						System.out.println("\t1. Codigo\r\n"
+								+ "\t2. Direccion\r\n"
+								+ "\t3. Telefono\r\n"
+								+ "\t4. (Volver)");
+						System.out.print("Opcion:");
+						opcion7 = entrada.nextInt();
+						entrada.nextLine();
+						
+						switch(opcion7) {
+						case 1:
+							String dato_cod = "codigo";
+							String codigo;
+							
+							System.out.print("¿A quien quieres modificarle el DNI?: ");
+							String nombreCodigo = entrada.nextLine();
+							
+							do {
+								System.out.print("Introduce un numero de 5 digitos: ");
+								codigo = entrada.nextLine();
+								entrada.nextLine();
+								
+								if(codigo.length() != 5) {
+									System.err.println("El numero tiene que tener 5 digitos");
+								} else {
+									continue;
+								}
+							} while(codigo.length() != 5);
+							
+							Metodos.modificarLocales(conexion, entrada, dato_cod, codigo, nombreCodigo);
+						case 2:
+							String dato_dir = "direccion";
+							
+							System.out.print("¿A quien quieres modificarle la direccion?: ");
+							String nombreDIR = entrada.nextLine();
+							
+							System.out.print("Introduce la calle donde vive:");
+							String calle = entrada.nextLine();
+							
+							Metodos.modificarLocales(conexion, entrada, dato_dir, calle, nombreDIR);
+						case 3:
+							String dato_tel = "telefono";
+							String telefonoEmpleado;
+							
+							System.out.print("¿A quien quieres modificarle el numero de telefono?: ");
+							String nombreTEL = entrada.nextLine();
+							
+							do {
+								System.out.print("Introduce el numero de telefono de 9 digitos(XXX-XXX-XXX o XXX-XX-XX-XX): ");
+								telefonoEmpleado = entrada.nextLine();
+								
+								if(telefonoEmpleado.length() != 9) {
+									System.err.println("El numero tiene que tener 9 digitos");
+								} else {
+									continue;
+								}
+							} while (String.valueOf(telefonoEmpleado).length() != 9);
+														
+							Metodos.modificarEmpleados(conexion, entrada, dato_tel, telefonoEmpleado, nombreTEL);
+						case 4:
+							break;
+						default:
+							System.err.println("ERROR: OPCION INCORRECTA");
+							System.out.println();
+						}
+					} while(opcion7 != 4);
 					break;
 				case 8:
 					break;

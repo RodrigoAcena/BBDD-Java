@@ -149,10 +149,10 @@ public class Metodos {
 			
 			switch(dato) {
 			case "dni":
-				String consultaDNI = "UPDATE empleados SET"
+				String consultaDNI_Empleado = "UPDATE empleados SET"
 						+ " dni=\'cambio\'"
 						+ "WHERE nombre=\'nombre\'";
-	            ps = conexion.prepareStatement(consultaDNI);
+	            ps = conexion.prepareStatement(consultaDNI_Empleado);
 	            res = ps.executeQuery();
 	            
 	            do {
@@ -160,10 +160,10 @@ public class Metodos {
 	            } while(continuar);
 				break;
 			case "direccion":
-				String consultaDIR = "UPDATE empleados SET"
+				String consultaDIR_Empleado = "UPDATE empleados SET"
 						+ " direccion=\'cambio\'"
 						+ "WHERE nombre=\'nombre\'";
-	            ps = conexion.prepareStatement(consultaDIR);
+	            ps = conexion.prepareStatement(consultaDIR_Empleado);
 	            res = ps.executeQuery();
 	            
 	            do {
@@ -171,10 +171,10 @@ public class Metodos {
 	            } while(continuar);
 				break;
 			case "telefono":
-				String consultaTEL = "UPDATE empleados SET"
+				String consultaTEL_Empleado = "UPDATE empleados SET"
 						+ " telefono=\'cambio\'"
 						+ "WHERE nombre=\'nombre\'";
-	            ps = conexion.prepareStatement(consultaTEL);
+	            ps = conexion.prepareStatement(consultaTEL_Empleado);
 	            res = ps.executeQuery();
 	            
 	            do {
@@ -196,8 +196,60 @@ public class Metodos {
         }
 	}
 	
-	public static void modificarLocales() {
+	public static void modificarLocales(Connection conexion, Scanner entrada, String dato, String cambio, String nombre) {
+		PreparedStatement ps = null;
+		ResultSet res = null;
 		
+		try {
+			boolean continuar = false;
+			
+			switch(dato) {
+			case "codigo":
+				String consultaCOD_Local = "UPDATE locales SET"
+						+ " codigo=\'cambio\'"
+						+ "WHERE nombre=\'nombre\'";
+	            ps = conexion.prepareStatement(consultaCOD_Local);
+	            res = ps.executeQuery();
+	            
+	            do {
+	            	continuar = sN(entrada);
+	            } while(continuar);
+				break;
+			case "direccion":
+				String consultaDIR_Local = "UPDATE locales SET"
+						+ " direccion=\'cambio\'"
+						+ "WHERE nombre=\'nombre\'";
+	            ps = conexion.prepareStatement(consultaDIR_Local);
+	            res = ps.executeQuery();
+	            
+	            do {
+	            	continuar = sN(entrada);
+	            } while(continuar);
+				break;
+			case "telefono":
+				String consultaTEL_Local = "UPDATE locales SET"
+						+ " telefono=\'cambio\'"
+						+ "WHERE nombre=\'nombre\'";
+	            ps = conexion.prepareStatement(consultaTEL_Local);
+	            res = ps.executeQuery();
+	            
+	            do {
+	            	continuar = sN(entrada);
+	            } while(continuar);
+				break;
+			}
+            
+            
+        } catch (SQLException e) {
+            System.err.println("Error al mostrar datos: " + e.getMessage());
+        } finally {
+            try {
+                if (res != null) res.close();
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar recursos: " + e.getMessage());
+            }
+        }
 	}
 
 	public static void eliminarEmpleados() {
