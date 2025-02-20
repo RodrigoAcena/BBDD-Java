@@ -235,8 +235,12 @@ public class Principal {
 					} while(opcion7 != 4);
 					break;
 				case 8:
+					System.out.print("Introduce el ID del empleado a eliminar: ");
+					int id_empleado = entrada.nextInt();
+					entrada.nextLine();
 					break;
 				case 9:
+					
 					break;
 				case 10:
 					break;
