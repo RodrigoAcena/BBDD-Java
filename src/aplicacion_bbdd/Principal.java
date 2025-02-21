@@ -51,7 +51,7 @@ public class Principal {
 					Metodos.mostrar(base_pedidos, conexion);
 					break;
 				case 3:
-					
+					Metodos.mostrarTodo(conexion);
 					break;
 				case 4:
 					System.out.print("Nombre: ");
