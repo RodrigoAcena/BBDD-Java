@@ -86,6 +86,11 @@ public class Metodos {
             res1 = ps1.executeQuery();
             ResultSetMetaData rmd1 = res1.getMetaData();
             
+            if (!res1.isBeforeFirst()) {
+                System.out.println("No hay datos en la tabla productos.");
+                return;
+            }
+            
             System.out.printf("%10s%10s%10s%10s%10s%10s%n",
                     rmd1.getColumnName(1), rmd1.getColumnName(2), rmd1.getColumnName(3),
                     rmd1.getColumnName(4), rmd1.getColumnName(5), rmd1.getColumnName(6));
@@ -103,6 +108,11 @@ public class Metodos {
             ps2 = conexion.prepareStatement(consulta2);
             res2 = ps2.executeQuery();
             ResultSetMetaData rmd2 = res1.getMetaData();
+            
+            if (!res2.isBeforeFirst()) {
+                System.out.println("No hay datos en la tabla pedidos.");
+                return;
+            }
                     
                
 	        System.out.printf("%10s%10s%10s%10s%10s%10s%10s%n",
@@ -211,34 +221,40 @@ public class Metodos {
 			switch(dato) {
 			case "dni":
 				String consultaDNI_Empleado = "UPDATE empleados SET"
-						+ " dni=\'cambio\'"
-						+ "WHERE nombre=\'nombre\'";
+						+ "dni=?"
+						+ "WHERE nombre=?";
 	            ps = conexion.prepareStatement(consultaDNI_Empleado);
 	            res = ps.executeQuery();
 	            
 	            do {
+	            	ps.setString(1, cambio);
+	            	ps.setString(2, nombre);
 	            	continuar = sN(entrada);
 	            } while(continuar);
 				break;
 			case "direccion":
 				String consultaDIR_Empleado = "UPDATE empleados SET"
-						+ " direccion=\'cambio\'"
-						+ "WHERE nombre=\'nombre\'";
+						+ "direccion=?"
+						+ "WHERE nombre=?";
 	            ps = conexion.prepareStatement(consultaDIR_Empleado);
 	            res = ps.executeQuery();
 	            
 	            do {
+	            	ps.setString(1, cambio);
+	            	ps.setString(2, nombre);
 	            	continuar = sN(entrada);
 	            } while(continuar);
 				break;
 			case "telefono":
 				String consultaTEL_Empleado = "UPDATE empleados SET"
-						+ " telefono=\'cambio\'"
-						+ "WHERE nombre=\'nombre\'";
+						+ "telefono=?"
+						+ "WHERE nombre=?";
 	            ps = conexion.prepareStatement(consultaTEL_Empleado);
 	            res = ps.executeQuery();
 	            
 	            do {
+	            	ps.setString(1, cambio);
+	            	ps.setString(2, nombre);
 	            	continuar = sN(entrada);
 	            } while(continuar);
 				break;
@@ -267,34 +283,40 @@ public class Metodos {
 			switch(dato) {
 			case "codigo":
 				String consultaCOD_Local = "UPDATE locales SET"
-						+ " codigo=\'cambio\'"
-						+ "WHERE nombre=\'nombre\'";
+						+ "codigo=?"
+						+ "WHERE nombre=?";
 	            ps = conexion.prepareStatement(consultaCOD_Local);
 	            res = ps.executeQuery();
 	            
 	            do {
+	            	ps.setString(1, cambio);
+	            	ps.setString(2, nombre);
 	            	continuar = sN(entrada);
 	            } while(continuar);
 				break;
 			case "direccion":
 				String consultaDIR_Local = "UPDATE locales SET"
-						+ " direccion=\'cambio\'"
-						+ "WHERE nombre=\'nombre\'";
+						+ "direccion=?"
+						+ "WHERE nombre=?";
 	            ps = conexion.prepareStatement(consultaDIR_Local);
 	            res = ps.executeQuery();
 	            
 	            do {
+	            	ps.setString(1, cambio);
+	            	ps.setString(2, nombre);
 	            	continuar = sN(entrada);
 	            } while(continuar);
 				break;
 			case "telefono":
 				String consultaTEL_Local = "UPDATE locales SET"
-						+ " telefono=\'cambio\'"
-						+ "WHERE nombre=\'nombre\'";
+						+ "telefono=?"
+						+ "WHERE nombre=?";
 	            ps = conexion.prepareStatement(consultaTEL_Local);
 	            res = ps.executeQuery();
 	            
 	            do {
+	            	ps.setString(1, cambio);
+	            	ps.setString(2, nombre);
 	            	continuar = sN(entrada);
 	            } while(continuar);
 				break;

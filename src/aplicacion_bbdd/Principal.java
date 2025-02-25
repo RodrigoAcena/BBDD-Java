@@ -108,12 +108,12 @@ public class Principal {
 							String nombreDNI = entrada.nextLine();
 							
 							do {
-								System.out.print("Introduce un numero de 9 digitos: ");
+								System.out.print("Introduce un numero de 8 digitos: ");
 								num1 = entrada.nextInt();
 								entrada.nextLine();
 								
-								if(String.valueOf(num1).length() != 9) {
-									System.err.println("El numero tiene que tener 9 digitos");
+								if(String.valueOf(num1).length() != 8) {
+									System.err.println("El numero tiene que tener 8 digitos");
 								} else {
 									continue;
 								}
