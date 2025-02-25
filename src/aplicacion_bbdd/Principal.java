@@ -95,7 +95,7 @@ public class Principal {
 								+ "\t2. Direccion\r\n"
 								+ "\t3. Telefono\r\n"
 								+ "\t4. (Volver)");
-						System.out.print("Opcion:");
+						System.out.print("Opcion: ");
 						opcion6 = entrada.nextInt();
 						entrada.nextLine();
 						
@@ -117,7 +117,7 @@ public class Principal {
 								} else {
 									continue;
 								}
-							} while(String.valueOf(num1).length() != 9);
+							} while(String.valueOf(num1).length() != 8);
 							
 							System.out.print("Introduce la ultima letra: ");
 							char letra = entrada.next().charAt(0);
@@ -125,16 +125,18 @@ public class Principal {
 							String dni = String.valueOf(num1)+letra;
 							
 							Metodos.modificarEmpleados(conexion, entrada, dato_dni, dni, nombreDNI);
+							break;
 						case 2:
 							String dato_dir = "direccion";
 							
 							System.out.print("¿A quien quieres modificarle la direccion?: ");
 							String nombreDIR = entrada.nextLine();
 							
-							System.out.print("Introduce la calle donde vive:");
+							System.out.print("Introduce la calle donde vive: ");
 							String calle = entrada.nextLine();
 							
 							Metodos.modificarEmpleados(conexion, entrada, dato_dir, calle, nombreDIR);
+							break;
 						case 3:
 							String dato_tel = "telefono";
 							String telefonoEmpleado;
@@ -154,6 +156,7 @@ public class Principal {
 							} while (String.valueOf(telefonoEmpleado).length() != 9);
 														
 							Metodos.modificarEmpleados(conexion, entrada, dato_tel, telefonoEmpleado, nombreTEL);
+							break;
 						case 4:
 							break;
 						default:
@@ -172,7 +175,7 @@ public class Principal {
 								+ "\t2. Direccion\r\n"
 								+ "\t3. Telefono\r\n"
 								+ "\t4. (Volver)");
-						System.out.print("Opcion:");
+						System.out.print("Opcion: ");
 						opcion7 = entrada.nextInt();
 						entrada.nextLine();
 						
@@ -197,16 +200,18 @@ public class Principal {
 							} while(codigo.length() != 5);
 							
 							Metodos.modificarLocales(conexion, entrada, dato_cod, codigo, nombreCodigo);
+							break;
 						case 2:
 							String dato_dir = "direccion";
 							
 							System.out.print("¿A quien quieres modificarle la direccion?: ");
 							String nombreDIR = entrada.nextLine();
 							
-							System.out.print("Introduce la calle donde vive:");
+							System.out.print("Introduce la calle donde vive: ");
 							String calle = entrada.nextLine();
 							
 							Metodos.modificarLocales(conexion, entrada, dato_dir, calle, nombreDIR);
+							break;
 						case 3:
 							String dato_tel = "telefono";
 							String telefonoEmpleado;
@@ -226,6 +231,7 @@ public class Principal {
 							} while (String.valueOf(telefonoEmpleado).length() != 9);
 														
 							Metodos.modificarEmpleados(conexion, entrada, dato_tel, telefonoEmpleado, nombreTEL);
+							break;
 						case 4:
 							break;
 						default:
